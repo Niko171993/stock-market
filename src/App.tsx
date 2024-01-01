@@ -1,7 +1,15 @@
+import React from 'react';
 import { useState } from 'react';
-
-function App() {
-  return <></>;
-}
+import { Stocks } from './components/index';
+import { stocksData } from './data/stocks';
+const App = () => {
+  return (
+    <section>
+      <div className="section-center">
+        <Stocks stocksData={stocksData} />
+      </div>
+    </section>
+  );
+};
 
 export default App;
