@@ -1,6 +1,6 @@
-# React + TypeScript + SASS + Tailwind
+# React + TypeScript + SASS
 
-This is a Portfolio Project for Nikoloz Macharahvili. I will be using ReactJS, TypeScript, SASS and Tailwind to create a stock market API. I do not have a backend so I will be generating everything on the front end.
+This is a Portfolio Project for Nikoloz Macharahvili. I will be using ReactJS, TypeScript and SASS to create a stock market API. I do not have a backend so I will be generating everything on the front end.
 
 ## I will write the documentation for the long 2-3-+ month project as follows
 
