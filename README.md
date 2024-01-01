@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+# React + TypeScript + SASS + Tailwind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a Portfolio Project for Nikoloz Macharahvili. I will be using ReactJS, TypeScript, SASS and Tailwind to create a stock market API. I do not have a backend so I will be generating everything on the front end.
 
-Currently, two official plugins are available:
+## I will write the documentation for the long 2-3-+ month project as follows
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+My goal is to create a Stock-Market API, and write the documentation for it here. The steps I took to create this project will be all here, I will be using chatGPT 3.5 for best-practices and code where I fall short.
 
-## Expanding the ESLint configuration
+### The Goal and Steps
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+So my goal is to create a stock-market API and in here I will write steps for EverDay.
 
-- Configure the top-level `parserOptions` property like this:
+#### Day 1
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Goal: Create a Project with Vite + TypeScript. Create data for 10 stocks. Chart them using React Re-Charts Library and create cards for each stock.
