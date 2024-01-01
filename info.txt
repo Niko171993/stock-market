@@ -1,0 +1,8 @@
+import { TfiMoney } from "react-icons/tfi";
+<TfiMoney />
+
+import { MdOutlineTitle } from "react-icons/md";
+<MdOutlineTitle />
+
+import { SiSubtitleedit } from "react-icons/si";
+<SiSubtitleedit />
