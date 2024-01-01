@@ -5,7 +5,7 @@
 }
 body {
   background: #222;
-  color: red;
+  color: #8b0000;
   margin: 0;
   padding: 0;
 }
@@ -14,7 +14,7 @@ body {
   height: auto;
   margin: 0 auto;
   margin-block: 2rem;
-  border: 3px solid red;
+  border: 3px solid #8b0000;
   border-radius: 0.5rem;
   display: grid;
   grid-auto-rows: 14rem 1fr;
@@ -43,6 +43,22 @@ body {
   gap: 3rem;
   margin-bottom: 1rem;
   padding-inline: 3rem;
+  position: relative;
+  align-items: center;
+}
+.flex::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: #8b0000;
+  z-index: 20;
+  border-radius: 0.5rem;
+}
+.no-divider::after {
+  display: none;
 }
 .bar {
   margin-left: -1rem;
@@ -70,4 +86,14 @@ body {
   object-fit: cover;
   border-radius: 50%;
   outline: 0.25rem solid #222;
+}
+.stock__title {
+  color: red;
+}
+.stock__subTitle {
+  display: inline-block;
+  background: #8b0000;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  color: white;
 }

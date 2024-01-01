@@ -10,6 +10,6 @@ export type SingleStockType = {
   id: number;
   companyName: string;
   stockName: string;
-  price: number;
+
   data: { date: string; price: number }[];
 };

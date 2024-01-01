@@ -31,7 +31,7 @@ const SingleStock = ({
               }}
             />
             <Legend />
-            <Bar dataKey="price" fill="red" />
+            <Bar dataKey="price" fill="#8b0000" />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -40,16 +40,24 @@ const SingleStock = ({
       </div>
       <div className="stock__info">
         <div className="flex">
-          <h5>Company Name</h5>
-          <h3>{companyName}</h3>
+          <h5 className="stock__title">Company Name</h5>
+          <div>
+            <h3 className="stock__subTitle">{companyName}</h3>
+          </div>
         </div>
+
         <div className="flex">
-          <h5>Stock Name</h5>
-          <p>{stockName}</p>
+          <h5 className="stock__title">Stock Name</h5>
+          <div>
+            <p className="stock__subTitle">{stockName}</p>
+          </div>
         </div>
-        <div className="flex">
-          <h5>Current Price</h5>
-          <p>{data[data.length - 1].price}</p>
+
+        <div className="flex no-divider">
+          <h5 className="stock__title">Current Price</h5>
+          <div>
+            <p className="stock__subTitle">$ {data[data.length - 1].price}</p>
+          </div>
         </div>
       </div>
     </article>
