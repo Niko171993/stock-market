@@ -9,13 +9,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import bull from '../images/bull.jpg';
-const SingleStock = ({
-  id,
-  companyName,
-  stockName,
-
-  data,
-}: SingleStockType) => {
+const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
   return (
     <article className="stock">
       <div className="stock__img">
@@ -57,6 +51,12 @@ const SingleStock = ({
           <h5 className="stock__title">Current Price</h5>
           <div>
             <p className="stock__subTitle">$ {data[data.length - 1].price}</p>
+          </div>
+        </div>
+        <div className="flex no-divider">
+          <h5 className="stock__title">old Price</h5>
+          <div>
+            <p className="stock__subTitle">$ {data[data.length - 2].price}</p>
           </div>
         </div>
       </div>
