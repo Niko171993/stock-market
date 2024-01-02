@@ -26,6 +26,6 @@
     "noFallthroughCasesInSwitch": true
   },
   "types": ["recharts"],
-  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/errors/stateState.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,7 +1,7 @@
 import { StocksDataType } from 'Types/Types';
 import SingleStock from './SingleStock';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 type newSimulationType = {
   id: number;
   companyName: string;
@@ -12,34 +12,47 @@ type newSimulationType = {
 const Stocks = ({ stocksData }: StocksDataType) => {
   const [newData, setNewData] = useState<newSimulationType[] | []>([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const mainRef = useRef<newSimulationType[] | []>([]);
   const simulatePrice = (price: number) => {
     const randomFactor = Math.random() * 10 - 5;
     const newAmount = price * (1 + randomFactor / 100);
     return newAmount;
   };
+
   const tempStocks = async () => {
     setIsLoading(true);
-    const tempStocksData = stocksData.map((stock) => {
-      const newDate = new Date().toISOString();
-      const newNumber = simulatePrice(stock.data[stock.data.length - 1].price);
-      return {
-        ...stock,
-        data: {
-          ...stock.data,
-          date: newDate,
-          price: newNumber,
-        },
-      };
-    });
-    setIsLoading(false);
-    setNewData(tempStocksData);
+    let main = [];
+    if (newData.length) {
+      main = newData;
+    } else {
+      main = stocksData;
+    }
+    try {
+      const tempStocksData = main.map((stock) => {
+        const newDate = new Date().toISOString();
+        const newNumber = parseFloat(
+          simulatePrice(stock.data[stock.data.length - 1].price).toFixed(2)
+        );
+        return {
+          ...stock,
+          data: [...stock.data, { date: newDate, price: newNumber }],
+        };
+      });
+      mainRef.current = tempStocksData;
+    } catch (error) {
+      console.error('Error in tempStocks:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    const simulator = setTimeout(tempStocks, 5000);
-    return () => clearTimeout(simulator);
-  }, []);
+    const timeout = setInterval(() => {
+      tempStocks();
+      setNewData(() => mainRef.current);
+    }, 20000);
+    return () => clearInterval(timeout);
+  }, [newData]);
 
   let content: JSX.Element | string;
   if (isLoading) {
@@ -52,9 +65,8 @@ const Stocks = ({ stocksData }: StocksDataType) => {
         ))}
       </>
     );
-    // content = <></>;
+
     alert('new data');
-    console.log(newData);
   } else {
     content = (
       <>

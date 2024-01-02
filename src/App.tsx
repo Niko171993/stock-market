@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useRef } from 'react';
+
 import { Stocks } from './components/index';
 import { stocksData } from './data/stocks';
 const App = () => {
