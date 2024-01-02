@@ -60,6 +60,7 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
           </div>
         </div>
       </div>
+      <button>View More</button>
     </article>
   );
 };

@@ -39,6 +39,7 @@ const Stocks = ({ stocksData }: StocksDataType) => {
         };
       });
       mainRef.current = tempStocksData;
+      setNewData(() => mainRef.current);
     } catch (error) {
       console.error('Error in tempStocks:', error);
     } finally {
@@ -47,11 +48,8 @@ const Stocks = ({ stocksData }: StocksDataType) => {
   };
 
   useEffect(() => {
-    const timeout = setInterval(() => {
-      tempStocks();
-      setNewData(() => mainRef.current);
-    }, 20000);
-    return () => clearInterval(timeout);
+    // const timeout = setInterval(tempStocks, 15000);
+    // return () => clearInterval(timeout);
   }, [newData]);
 
   let content: JSX.Element | string;
