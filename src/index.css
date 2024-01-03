@@ -33,7 +33,7 @@ body {
 }
 button {
   display: flex;
-  color: #8b0000;
+  color: red;
   justify-content: center;
   align-items: center;
   cursor: pointer;
