@@ -1,13 +1,13 @@
 import { StocksDataType } from 'Types/Types';
 import SingleStock from './SingleStock';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSimulatedContext } from '../contexts/StockAPIContext';
-// type newSimulationType = {
-//   id: number;
-//   companyName: string;
-//   stockName: string;
-//   data: { date: string; price: number }[];
-// };
+type newSimulationType = {
+  id: number;
+  companyName: string;
+  stockName: string;
+  data: { date: string; price: number }[];
+};
 
 const Stocks = ({ stocksData }: StocksDataType) => {
   // const [newData, setNewData] = useState<newSimulationType[] | []>([]);
@@ -19,6 +19,7 @@ const Stocks = ({ stocksData }: StocksDataType) => {
     setLoading,
     setLoadingFalse,
   } = useSimulatedContext();
+
   const simulatePrice = (price: number) => {
     const randomFactor = Math.random() * 10 - 5;
     const newAmount = price * (1 + randomFactor / 100);
@@ -54,9 +55,9 @@ const Stocks = ({ stocksData }: StocksDataType) => {
   };
 
   useEffect(() => {
-    const timeout = setTimeout(tempStocks, 60000);
+    const timeout = setTimeout(tempStocks, 30000);
     return () => clearTimeout(timeout);
-  }, [newData]);
+  }, [tempStocks]);
 
   let content: JSX.Element | string;
   if (isLoading) {
