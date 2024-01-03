@@ -33,7 +33,6 @@ body {
 }
 button {
   display: flex;
-  background: #222;
   color: red;
   justify-content: center;
   align-items: center;
@@ -44,6 +43,7 @@ button {
   width: 100%;
   margin-top: 2rem;
   padding-block: 1.2rem;
+  background: red;
 }
 button:hover {
   background: #8b0000;
