@@ -28,7 +28,7 @@ body {
 .stock__info {
   background: #222;
   height: 11rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding-top: 1rem;
 }
 button {
@@ -42,11 +42,12 @@ button {
   transition: background 0.2s linear;
   border: none;
   width: 100%;
-  margin-top: 1rem;
-  padding-block: 1rem;
+  margin-top: 2rem;
+  padding-block: 1.2rem;
 }
 button:hover {
-  background: #111;
+  background: #8b0000;
+  color: #fff;
 }
 button:focus {
   outline: none;
@@ -112,7 +113,7 @@ button:focus {
   display: block;
   object-fit: cover;
   border-radius: 50%;
-  outline: 0.25rem solid #222;
+  outline: 0.5rem solid #222;
 }
 .stock__title {
   color: red;

@@ -21,3 +21,11 @@ Also added the bull icon in the middle of the card, looks cool, learned from Joh
 Some problems I ran into:
 I do not know recharts that well im studying it now, but display the chart was definitely a problem. Also styling the chart and centering it was a problem. I needed to use a margin-left: - 1 hack to center it correctly.
 I used definite widths on the card since I want it to look that way, if it grows it will distort it.
+
+### Day 2
+
+Worked on implementing real-time-update, and got into an infinite loop problem, solved it but its still iffy. also redesigned the card
+
+### Day 3
+
+Today I will be installing SASS and setting up context and reducers
