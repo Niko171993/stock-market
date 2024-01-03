@@ -16,22 +16,31 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
         <h3>{stockName} Chart</h3>
         <ResponsiveContainer width="99%" height="100%" className="bar">
           <BarChart width={500} height={300} data={data}>
-            <XAxis dataKey="date" />
-            <YAxis type="number" />
+            <XAxis
+              dataKey="date"
+              tick={{ fill: 'white' }}
+              axisLine={{ stroke: 'white' }}
+            />
+            <YAxis
+              type="number"
+              tick={{ fill: 'white' }}
+              axisLine={{ stroke: 'white' }}
+            />
             <Tooltip
               contentStyle={{
                 background: 'white !important',
-                color: 'black !important',
+                color: 'white !important',
               }}
             />
             <Legend />
             <Bar dataKey="price" fill="#8b0000" />
           </BarChart>
         </ResponsiveContainer>
+        <div className="bull">
+          <img className="bull-img" src={bull} alt="bull" />
+        </div>
       </div>
-      <div className="bull">
-        <img className="bull-img" src={bull} alt="bull" />
-      </div>
+
       <div className="stock__info">
         <div className="flex">
           <h5 className="stock__title">Company Name</h5>
