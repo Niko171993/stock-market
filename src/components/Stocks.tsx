@@ -1,6 +1,6 @@
 import { StocksDataType } from 'Types/Types';
 import SingleStock from './SingleStock';
-
+import { useCallback } from 'react';
 import { useEffect, useRef, useState } from 'react';
 type newSimulationType = {
   id: number;
@@ -19,7 +19,7 @@ const Stocks = ({ stocksData }: StocksDataType) => {
     return newAmount;
   };
 
-  const tempStocks = async () => {
+  const tempStocks = () => {
     setIsLoading(true);
     let main = [];
     if (newData.length) {
@@ -39,7 +39,7 @@ const Stocks = ({ stocksData }: StocksDataType) => {
         };
       });
       mainRef.current = tempStocksData;
-      setNewData(() => mainRef.current);
+      setNewData(() => tempStocksData);
     } catch (error) {
       console.error('Error in tempStocks:', error);
     } finally {
@@ -48,8 +48,8 @@ const Stocks = ({ stocksData }: StocksDataType) => {
   };
 
   useEffect(() => {
-    // const timeout = setInterval(tempStocks, 15000);
-    // return () => clearInterval(timeout);
+    const timeout = setInterval(tempStocks, 15000);
+    return () => clearInterval(timeout);
   }, [newData]);
 
   let content: JSX.Element | string;
