@@ -1,18 +1,24 @@
 import { StocksDataType } from 'Types/Types';
 import SingleStock from './SingleStock';
-import { useCallback } from 'react';
-import { useEffect, useRef, useState } from 'react';
-type newSimulationType = {
-  id: number;
-  companyName: string;
-  stockName: string;
-  data: { date: string; price: number }[];
-};
+import { useEffect } from 'react';
+import { useSimulatedContext } from '../contexts/StockAPIContext';
+// type newSimulationType = {
+//   id: number;
+//   companyName: string;
+//   stockName: string;
+//   data: { date: string; price: number }[];
+// };
 
 const Stocks = ({ stocksData }: StocksDataType) => {
-  const [newData, setNewData] = useState<newSimulationType[] | []>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const mainRef = useRef<newSimulationType[] | []>([]);
+  // const [newData, setNewData] = useState<newSimulationType[] | []>([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  const {
+    updateSimulatedStocks,
+    isLoading,
+    simulatedStocks: newData,
+    setLoading,
+    setLoadingFalse,
+  } = useSimulatedContext();
   const simulatePrice = (price: number) => {
     const randomFactor = Math.random() * 10 - 5;
     const newAmount = price * (1 + randomFactor / 100);
@@ -20,7 +26,7 @@ const Stocks = ({ stocksData }: StocksDataType) => {
   };
 
   const tempStocks = () => {
-    setIsLoading(true);
+    setLoading();
     let main = [];
     if (newData.length) {
       main = newData;
@@ -38,18 +44,18 @@ const Stocks = ({ stocksData }: StocksDataType) => {
           data: [...stock.data, { date: newDate, price: newNumber }],
         };
       });
-      mainRef.current = tempStocksData;
-      setNewData(mainRef.current);
+      // mainRef.current = tempStocksData;
+      updateSimulatedStocks(tempStocksData);
     } catch (error) {
       console.error('Error in tempStocks:', error);
     } finally {
-      setIsLoading(false);
+      setLoadingFalse();
     }
   };
 
   useEffect(() => {
-    const timeout = setInterval(tempStocks, 15000);
-    return () => clearInterval(timeout);
+    const timeout = setTimeout(tempStocks, 60000);
+    return () => clearTimeout(timeout);
   }, [newData]);
 
   let content: JSX.Element | string;
@@ -63,8 +69,6 @@ const Stocks = ({ stocksData }: StocksDataType) => {
         ))}
       </>
     );
-
-    alert('new data');
   } else {
     content = (
       <>

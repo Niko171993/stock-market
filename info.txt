@@ -6,3 +6,8 @@ import { MdOutlineTitle } from "react-icons/md";
 
 import { SiSubtitleedit } from "react-icons/si";
 <SiSubtitleedit />
+
+
+
+Day 3 
+i need to put default return for reducer, and pass in state to value
