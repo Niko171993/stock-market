@@ -47,7 +47,7 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
           </div>
         </div>
 
-        <div className="flex no-divider">
+        <div className="flex ">
           <h5 className="stock__title">Current Price</h5>
           <div>
             <p className="stock__subTitle">$ {data[data.length - 1].price}</p>
