@@ -9,9 +9,35 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import bull from '../images/bull.jpg';
+import gucci from '../images/gucci.jpg';
+import { Modal } from './index';
+import { useState, useEffect } from 'react';
 const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
+  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    // Disable scrolling when the modal is open
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Re-enable scrolling when the modal is closed
+      document.body.style.overflow = 'auto';
+    }
+
+    // Cleanup: Re-enable scrolling when the component unmounts
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
   return (
     <article className="stock">
+      <Modal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        companyName={companyName}
+        stockName={stockName}
+        data={data}
+        gucci={gucci}
+      />
       <div className="stock__img">
         <h3>{stockName} Chart</h3>
         <ResponsiveContainer width="99%" height="100%" className="bar">
@@ -69,7 +95,9 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
           </div>
         </div>
       </div>
-      <button>View More</button>
+      <button className="single-stock-btn" onClick={() => setIsOpen(true)}>
+        View More
+      </button>
     </article>
   );
 };

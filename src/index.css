@@ -4,7 +4,7 @@
   margin: 0;
 }
 body {
-  background: #fff;
+  background: black;
   color: #8b0000;
   margin: 0;
   padding: 0;
@@ -31,7 +31,7 @@ body {
   padding-top: 2rem;
   padding-bottom: 1rem;
 }
-button {
+.single-stock-btn {
   display: flex;
   color: red;
   justify-content: center;
@@ -45,7 +45,7 @@ button {
   padding-block: 1.2rem;
   background: black;
 }
-button:hover {
+.single-stock-btn:hover {
   background: #8b0000;
   color: #fff;
 }
@@ -124,4 +124,69 @@ button:focus {
   border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
   color: white;
+}
+
+/* modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 1000;
+  transition: opacity 0.5s ease-in-out;
+  display: grid;
+  place-items: center;
+}
+.modal-container {
+  position: absolute;
+  width: 90vw;
+
+  background: #222;
+  border-radius: 0.5rem;
+  max-width: 40rem;
+}
+.modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  color: white;
+}
+.show-modal {
+  opacity: 1;
+  pointer-events: auto;
+}
+.hide-modal {
+  opacity: 0;
+  pointer-events: none;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.modal-close-btn {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  padding: 20px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+}
+
+.gucci {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.flex-2 {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
+  font-size: 1.2rem;
+
+  margin-bottom: 0.5rem;
 }

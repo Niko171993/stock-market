@@ -55,8 +55,8 @@ const Stocks = ({ stocksData }: StocksDataType) => {
   };
 
   useEffect(() => {
-    const timeout = setTimeout(tempStocks, 30000);
-    return () => clearTimeout(timeout);
+    // const timeout = setTimeout(tempStocks, 30000);
+    // return () => clearTimeout(timeout);
   }, [tempStocks]);
 
   let content: JSX.Element | string;

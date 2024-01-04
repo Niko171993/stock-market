@@ -26,3 +26,11 @@ export type SimulatedContextType = {
   setLoading: () => void;
   setLoadingFalse: () => void;
 };
+export type ModalType = {
+  isOpen: boolean;
+  companyName: string;
+  stockName: string;
+  data: { date: string; price: number }[];
+  setIsOpen: (data: boolean) => void;
+  gucci: string;
+};
