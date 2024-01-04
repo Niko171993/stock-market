@@ -142,7 +142,7 @@ button:focus {
 
   background: #222;
   border-radius: 0.5rem;
-  max-width: 40rem;
+  max-width: 50rem;
 }
 .modal-content {
   display: flex;
@@ -177,9 +177,19 @@ button:focus {
 }
 
 .gucci {
-  width: 200px;
-  height: 200px;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border-radius: 50%;
+}
+@media screen and (min-width: 768px) {
+  .gucci {
+    width: 100px;
+    height: 100px;
+  }
 }
 .flex-2 {
   display: flex;
@@ -189,4 +199,12 @@ button:focus {
   font-size: 1.2rem;
 
   margin-bottom: 0.5rem;
+}
+
+/* modal chart */
+.modal-chart {
+  width: 400px;
+  height: 400px;
+}
+.modal-chart-container {
 }

@@ -1,13 +1,7 @@
 import { StocksDataType } from 'Types/Types';
 import SingleStock from './SingleStock';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSimulatedContext } from '../contexts/StockAPIContext';
-type newSimulationType = {
-  id: number;
-  companyName: string;
-  stockName: string;
-  data: { date: string; price: number }[];
-};
 
 const Stocks = ({ stocksData }: StocksDataType) => {
   // const [newData, setNewData] = useState<newSimulationType[] | []>([]);
@@ -55,8 +49,8 @@ const Stocks = ({ stocksData }: StocksDataType) => {
   };
 
   useEffect(() => {
-    // const timeout = setTimeout(tempStocks, 30000);
-    // return () => clearTimeout(timeout);
+    const timeout = setTimeout(tempStocks, 30000);
+    return () => clearTimeout(timeout);
   }, [tempStocks]);
 
   let content: JSX.Element | string;

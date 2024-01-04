@@ -1,6 +1,14 @@
-import React from 'react';
 import { ModalType } from 'Types/Types';
 import { useEffect } from 'react';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 const Modal = ({
   isOpen,
   companyName,
@@ -19,7 +27,56 @@ const Modal = ({
           <button className="modal-close-btn" onClick={() => setIsOpen(false)}>
             X
           </button>
-          <img className="gucci" src={gucci} alt="gucci mane" />
+          <div className="modal-chart-container">
+            <div className="modal-chart">
+              <ResponsiveContainer width="99%" height="100%" className="bar">
+                <BarChart width={500} height={300} data={data}>
+                  <XAxis
+                    dataKey="date"
+                    tick={{ fill: 'white' }}
+                    axisLine={{ stroke: 'white' }}
+                  />
+                  <YAxis
+                    type="number"
+                    tick={{ fill: 'white' }}
+                    axisLine={{ stroke: 'white' }}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: 'white !important',
+                      color: 'white !important',
+                    }}
+                  />
+                  <Legend />
+                  <Bar dataKey="price" fill="#8b0000" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <img className="gucci" src={gucci} alt="gucci mane" />
+
+            <ResponsiveContainer width="99%" height="100%" className="bar">
+              <BarChart width={500} height={300} data={data}>
+                <XAxis
+                  dataKey="date"
+                  tick={{ fill: 'white' }}
+                  axisLine={{ stroke: 'white' }}
+                />
+                <YAxis
+                  type="number"
+                  tick={{ fill: 'white' }}
+                  axisLine={{ stroke: 'white' }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    background: 'white !important',
+                    color: 'white !important',
+                  }}
+                />
+                <Legend />
+                <Bar dataKey="price" fill="#8b0000" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
           <div>
             <div className="flex-2">
               <h5>CompanyName: {companyName}</h5>{' '}
