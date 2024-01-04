@@ -1,5 +1,3 @@
-import React from 'react';
-
 const stocksAPIReducer = (state: any, action: any) => {
   switch (action.type) {
     case 'SET_LOADING':
