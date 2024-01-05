@@ -22,13 +22,13 @@ const Modal = ({
 
   return (
     <div className={`modal ${modalClassName}`}>
-      <div className="modal-container">
-        <div className="modal-content">
-          <button className="modal-close-btn" onClick={() => setIsOpen(false)}>
+      <div className="modal__container">
+        <div className="modal__content">
+          <button className="modal__closeBtn" onClick={() => setIsOpen(false)}>
             X
           </button>
-          <div className="modal-chart-container">
-            <div className="modal-chart">
+          <div className="modal__chartContainer">
+            <div className="modal__chart">
               <ResponsiveContainer width="99%" height="100%" className="bar">
                 <BarChart width={500} height={300} data={data}>
                   <XAxis

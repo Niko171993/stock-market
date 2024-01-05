@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: black;
+  color: #8b0000;
+  margin: 0;
+  padding: 0;
+}
+
+button:focus {
+  outline: none;
+}
+
+.section-center {
+  width: 90vw;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 3rem;
+  margin-bottom: 1rem;
+  padding-inline: 2rem;
+  position: relative;
+  align-items: center;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    width: 90%;
+    height: 1px;
+    background: #8b0000;
+    z-index: 20;
+    border-radius: 0.5rem;
+  }
+  &:last-child {
+    margin-bottom: 0rem;
+  }
+}
+.flex-2 {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
+  font-size: 1.2rem;
+
+  margin-bottom: 0.5rem;
+}
+
+.no-divider::after {
+  display: none;
+}
+.bar {
+  margin-left: -1rem;
+}
+.recharts-legend-icon {
+  display: none;
+}
+.recharts-legend-item-text {
+  display: none;
+}
+.overflow-hidden {
+  overflow: hidden;
+}

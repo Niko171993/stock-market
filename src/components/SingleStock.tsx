@@ -62,8 +62,8 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
             <Bar dataKey="price" fill="#8b0000" />
           </BarChart>
         </ResponsiveContainer>
-        <div className="bull">
-          <img className="bull-img" src={bull} alt="bull" />
+        <div className="stock__bull">
+          <img className="stock__bullImg" src={bull} alt="bull" />
         </div>
       </div>
 
@@ -95,7 +95,7 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
           </div>
         </div>
       </div>
-      <button className="single-stock-btn" onClick={() => setIsOpen(true)}>
+      <button className="stock__singleBtn" onClick={() => setIsOpen(true)}>
         View More
       </button>
     </article>
