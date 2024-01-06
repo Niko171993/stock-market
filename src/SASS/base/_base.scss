@@ -18,6 +18,21 @@ button:focus {
   width: 90vw;
   max-width: 1170px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 830px) {
+  .section-center {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1250px) {
+  .section-center {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .flex {
