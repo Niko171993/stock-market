@@ -64,7 +64,8 @@ const Stocks = ({ stocksData }: StocksDataType) => {
     }
     try {
       const tempStocksData = main.map((stock) => {
-        const newDate = new Date().toISOString();
+        let newDate = new Date().toISOString();
+        newDate = format(newDate, 'HH:mm:ss');
         const newNumber = parseFloat(
           simulatePrice(stock.data[stock.data.length - 1].price).toFixed(2)
         );
