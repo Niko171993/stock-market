@@ -1,6 +1,5 @@
 import { SingleStockType } from 'Types/Types';
 
-import { format, parseISO } from 'date-fns';
 import {
   BarChart,
   Bar,
@@ -11,7 +10,6 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import bull from '../images/bull.jpg';
-import gucci from '../images/gucci.jpg';
 import { Modal } from './index';
 import { useState, useEffect } from 'react';
 
@@ -23,22 +21,13 @@ export type CustomTooltipProps = {
   active?: boolean;
   payload?: Array<{ payload: DataPoint; value: number }>;
 };
+
 const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
   const [isOpen, setIsOpen] = useState(false);
-  data = data.map((item) => {
-    let { date, price } = item;
-    const dateObject = parseISO(date);
-    const formattedDate = format(dateObject, 'yyyy-MM-dd HH:mm:ss');
-    date = formattedDate;
-    const time = format(date, 'HH:mm:ss');
-    return { date, price, time };
-  });
+
   const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
-      // Extract date from the payload
       const date = payload[0].payload.date;
-
-      // Format the date as needed
 
       return (
         <div className="custom-tooltip">
@@ -51,15 +40,12 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
     return null;
   };
   useEffect(() => {
-    // Disable scrolling when the modal is open
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      // Re-enable scrolling when the modal is closed
       document.body.style.overflow = 'auto';
     }
 
-    // Cleanup: Re-enable scrolling when the component unmounts
     return () => {
       document.body.style.overflow = 'auto';
     };
@@ -73,7 +59,6 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
         companyName={companyName}
         stockName={stockName}
         data={data}
-        gucci={gucci}
       />
       <div className="stock__img">
         <h3>{stockName} Chart</h3>
@@ -94,7 +79,6 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
               wrapperStyle={{
                 backgroundColor: 'white',
                 color: 'red',
-                border: '1px solid red',
               }}
             />
             <Legend />

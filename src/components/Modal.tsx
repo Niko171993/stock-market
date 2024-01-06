@@ -7,16 +7,15 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  CartesianGrid,
   Bar,
 } from 'recharts';
+import { CustomTooltipProps } from './SingleStock';
 const Modal = ({
   isOpen,
   companyName,
   stockName,
   data,
   setIsOpen,
-  gucci,
 }: ModalType) => {
   const [randomImage, setRandomImage] = useState<string>();
   const modalClassName = `${isOpen ? 'show-modal' : 'hide-modal'}`;
@@ -25,6 +24,20 @@ const Modal = ({
     const randomNumber = Math.floor(Math.random() * 1000);
     const fullImage = `https://picsum.photos/200/300?random=${randomNumber}`;
     setRandomImage(fullImage);
+  };
+  const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
+    if (active && payload && payload.length) {
+      const date = payload[0].payload.date;
+
+      return (
+        <div className="custom-tooltip">
+          <p>Date: {date}</p>
+          <p>Value: {payload[0].value}</p>
+        </div>
+      );
+    }
+
+    return null;
   };
   useEffect(() => {
     getRandomImage();
@@ -43,7 +56,17 @@ const Modal = ({
                 <BarChart data={data}>
                   <XAxis dataKey="date" />
                   <YAxis dataKey="price" />
-                  <Tooltip />
+                  <Tooltip
+                    content={<CustomTooltip />}
+                    contentStyle={{
+                      background: 'white !important',
+                      color: 'white !important',
+                    }}
+                    wrapperStyle={{
+                      backgroundColor: 'white',
+                      color: 'red',
+                    }}
+                  />
                   <Legend />
                   <Bar dataKey="price" fill="red" />
                 </BarChart>

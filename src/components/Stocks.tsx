@@ -3,6 +3,9 @@ import SingleStock from './SingleStock';
 import { useEffect, useState } from 'react';
 import { useSimulatedContext } from '../contexts/StockAPIContext';
 import { SingleStockType } from 'Types/Types';
+import { format } from 'date-fns';
+
+import { OfficialDataTypeObj } from 'Types/Types';
 const Stocks = ({ stocksData }: StocksDataType) => {
   // const [newData, setNewData] = useState<newSimulationType[] | []>([]);
   // const [isLoading, setIsLoading] = useState(false);
@@ -22,10 +25,10 @@ const Stocks = ({ stocksData }: StocksDataType) => {
     const newAmount = price * (1 + randomFactor / 100);
     return newAmount;
   };
+
   const changeTime = () => {
     const main = stocksData.map((stock) => {
-      let { data } = stock;
-      console.log('alert');
+      let { data }: OfficialDataTypeObj = stock;
       const milli = 15 * 1000;
       let totalMilli = milli * 4;
       let milliArray: number[] = [];
@@ -34,16 +37,21 @@ const Stocks = ({ stocksData }: StocksDataType) => {
         totalMilli -= milli;
       }
 
-      data = data.map((item, index) => {
-        let { date, price }: { date: any; price: number } = item;
-        let newDate = new Date().getTime();
-        const newTime = Number(newDate) - milliArray[index];
-        date = new Date(newTime).toISOString();
-        return { date, price };
-      });
+      data = data.map(
+        (item: { date: string; price: number; time?: string }, index) => {
+          let { date, price }: { date: number | string; price: number } = item;
+          let newDate = new Date().getTime();
+          const newTime = Number(newDate) - milliArray[index];
+          date = new Date(newTime).toISOString();
+          date = format(date, 'HH:mm:ss');
+
+          return { date, price };
+        }
+      );
+
       return { ...stock, data };
     });
-    console.log(main);
+
     setStocksDataArray(() => main);
   };
   const tempStocks = () => {
@@ -55,7 +63,6 @@ const Stocks = ({ stocksData }: StocksDataType) => {
       main = stocksDataArray;
     }
     try {
-      console.log(main, 'this is the main');
       const tempStocksData = main.map((stock) => {
         const newDate = new Date().toISOString();
         const newNumber = parseFloat(
@@ -66,7 +73,7 @@ const Stocks = ({ stocksData }: StocksDataType) => {
           data: [...stock.data, { date: newDate, price: newNumber }],
         };
       });
-      // mainRef.current = tempStocksData;
+
       updateSimulatedStocks(tempStocksData);
     } catch (error) {
       console.error('Error in tempStocks:', error);
@@ -76,7 +83,6 @@ const Stocks = ({ stocksData }: StocksDataType) => {
   };
   useEffect(() => {
     changeTime();
-    alert('change tiem');
   }, []);
   useEffect(() => {
     const timeout = setTimeout(tempStocks, 30000);

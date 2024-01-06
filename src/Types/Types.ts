@@ -12,6 +12,7 @@ export type SingleStockType = {
   stockName: string;
   data: { date: string; price: number }[];
 };
+
 export type SimulatedContextType = {
   isLoading: boolean;
   simulatedStocks:
@@ -32,5 +33,13 @@ export type ModalType = {
   stockName: string;
   data: { date: string; price: number }[];
   setIsOpen: (data: boolean) => void;
-  gucci: string;
+};
+
+export type OfficialDataType = {
+  date: string;
+  price: number;
+  time?: string;
+};
+export type OfficialDataTypeObj = {
+  data: { date: string; price: number; time?: string }[];
 };
