@@ -1,4 +1,6 @@
 import { SingleStockType } from 'Types/Types';
+
+import { format, parseISO } from 'date-fns';
 import {
   BarChart,
   Bar,
@@ -12,8 +14,42 @@ import bull from '../images/bull.jpg';
 import gucci from '../images/gucci.jpg';
 import { Modal } from './index';
 import { useState, useEffect } from 'react';
+
+export type DataPoint = {
+  date: string;
+  value: number;
+};
+export type CustomTooltipProps = {
+  active?: boolean;
+  payload?: Array<{ payload: DataPoint; value: number }>;
+};
 const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
   const [isOpen, setIsOpen] = useState(false);
+  data = data.map((item) => {
+    let { date, price } = item;
+    const dateObject = parseISO(date);
+    const formattedDate = format(dateObject, 'yyyy-MM-dd HH:mm:ss');
+    date = formattedDate;
+    const time = format(date, 'HH:mm:ss');
+    return { date, price, time };
+  });
+  const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
+    if (active && payload && payload.length) {
+      // Extract date from the payload
+      const date = payload[0].payload.date;
+
+      // Format the date as needed
+
+      return (
+        <div className="custom-tooltip">
+          <p>Date: {date}</p>
+          <p>Value: {payload[0].value}</p>
+        </div>
+      );
+    }
+
+    return null;
+  };
   useEffect(() => {
     // Disable scrolling when the modal is open
     if (isOpen) {
@@ -28,6 +64,7 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
       document.body.style.overflow = 'auto';
     };
   }, [isOpen]);
+
   return (
     <article className="stock">
       <Modal
@@ -42,20 +79,22 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
         <h3>{stockName} Chart</h3>
         <ResponsiveContainer width="99%" height="100%" className="bar">
           <BarChart width={500} height={300} data={data}>
-            <XAxis
-              dataKey="date"
-              tick={{ fill: 'white' }}
-              axisLine={{ stroke: 'white' }}
-            />
+            <XAxis tick={{ fill: 'white' }} axisLine={{ stroke: 'white' }} />
             <YAxis
               type="number"
               tick={{ fill: 'white' }}
               axisLine={{ stroke: 'white' }}
             />
             <Tooltip
+              content={<CustomTooltip />}
               contentStyle={{
                 background: 'white !important',
                 color: 'white !important',
+              }}
+              wrapperStyle={{
+                backgroundColor: 'white',
+                color: 'red',
+                border: '1px solid red',
               }}
             />
             <Legend />

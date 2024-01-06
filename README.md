@@ -29,3 +29,7 @@ Worked on implementing real-time-update, and got into an infinite loop problem, 
 ### Day 3
 
 Today I will be installing SASS and setting up context and reducers
+
+### Day 4-5
+
+Encountered a problem, because I receive 3 data objects for each stock, and their time was in the past, so had to figure out a formula to generate past 3 times with 15 second lapses, but did it :)

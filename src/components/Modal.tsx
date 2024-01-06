@@ -1,13 +1,14 @@
 import { ModalType } from 'Types/Types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   BarChart,
-  Bar,
   XAxis,
   YAxis,
   Tooltip,
   Legend,
   ResponsiveContainer,
+  CartesianGrid,
+  Bar,
 } from 'recharts';
 const Modal = ({
   isOpen,
@@ -17,9 +18,17 @@ const Modal = ({
   setIsOpen,
   gucci,
 }: ModalType) => {
+  const [randomImage, setRandomImage] = useState<string>();
   const modalClassName = `${isOpen ? 'show-modal' : 'hide-modal'}`;
-  useEffect(() => {});
 
+  const getRandomImage = () => {
+    const randomNumber = Math.floor(Math.random() * 1000);
+    const fullImage = `https://picsum.photos/200/300?random=${randomNumber}`;
+    setRandomImage(fullImage);
+  };
+  useEffect(() => {
+    getRandomImage();
+  }, []);
   return (
     <div className={`modal ${modalClassName}`}>
       <div className="modal__container">
@@ -27,66 +36,46 @@ const Modal = ({
           <button className="modal__closeBtn" onClick={() => setIsOpen(false)}>
             X
           </button>
+          <img className="gucci" src={randomImage} alt="gucci mane" />
           <div className="modal__chartContainer">
             <div className="modal__chart">
-              <ResponsiveContainer width="99%" height="100%" className="bar">
-                <BarChart width={500} height={300} data={data}>
-                  <XAxis
-                    dataKey="date"
-                    tick={{ fill: 'white' }}
-                    axisLine={{ stroke: 'white' }}
-                  />
-                  <YAxis
-                    type="number"
-                    tick={{ fill: 'white' }}
-                    axisLine={{ stroke: 'white' }}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      background: 'white !important',
-                      color: 'white !important',
-                    }}
-                  />
+              <ResponsiveContainer width="99%" height="100%">
+                <BarChart data={data}>
+                  <XAxis dataKey="date" />
+                  <YAxis dataKey="price" />
+                  <Tooltip />
                   <Legend />
-                  <Bar dataKey="price" fill="#8b0000" />
+                  <Bar dataKey="price" fill="red" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <img className="gucci" src={gucci} alt="gucci mane" />
-
-            <ResponsiveContainer width="99%" height="100%" className="bar">
-              <BarChart width={500} height={300} data={data}>
-                <XAxis
-                  dataKey="date"
-                  tick={{ fill: 'white' }}
-                  axisLine={{ stroke: 'white' }}
-                />
-                <YAxis
-                  type="number"
-                  tick={{ fill: 'white' }}
-                  axisLine={{ stroke: 'white' }}
-                />
-                <Tooltip
-                  contentStyle={{
-                    background: 'white !important',
-                    color: 'white !important',
-                  }}
-                />
-                <Legend />
-                <Bar dataKey="price" fill="#8b0000" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-          <div>
-            <div className="flex-2">
-              <h5>CompanyName: {companyName}</h5>{' '}
-              <h5>StockName: {stockName}</h5>
-            </div>
-            <div className="flex-2">
-              <h5>date: {data[data.length - 1].date}</h5>
-              <h5>Price: ${data[data.length - 1].price}</h5>
+            <div className="modal__info">
+              <div className="flex-2">
+                <h5>
+                  <span className="modal__subName">CompanyName:</span>{' '}
+                  {companyName}
+                </h5>{' '}
+                <h5>
+                  <span className="modal__subName">StockName:</span> {stockName}
+                </h5>
+              </div>
+              <div className="flex-2">
+                <h5>
+                  <span className="modal__subName">date:</span>{' '}
+                  {data[data.length - 1].date}
+                </h5>
+                <h5>
+                  <span className="modal__subName">Previous Price:</span> $
+                  {data[data.length - 2].price}
+                </h5>
+                <h5>
+                  <span className="modal__subName">Price:</span> $
+                  {data[data.length - 1].price}
+                </h5>
+              </div>
             </div>
           </div>
+          <div></div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic eos totam
           aspernatur laboriosam quo enim reprehenderit quibusdam vitae
           cupiditate soluta facere magnam, corrupti provident minus quam tempore
