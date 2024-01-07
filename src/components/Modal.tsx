@@ -54,7 +54,7 @@ const Modal = ({
             <div className="modal__chart">
               <ResponsiveContainer width="99%" height="100%">
                 <BarChart data={data}>
-                  <XAxis dataKey="date" />
+                  <XAxis />
                   <YAxis dataKey="price" />
                   <Tooltip
                     content={<CustomTooltip />}
