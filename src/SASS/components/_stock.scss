@@ -57,11 +57,11 @@
     text-align: center;
   }
   &__title {
-    color: $color-red-6;
+    color: $color-red-3;
   }
   &__subTitle {
     display: inline-block;
-    background: #8b0000;
+    background: $color-red-3;
     border-radius: 0.5rem;
     padding: 0.2rem 0.5rem;
     color: white;

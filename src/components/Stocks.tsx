@@ -35,7 +35,7 @@ const Stocks = ({ stocksData }: StocksDataType) => {
         totalMilli -= milli;
       }
 
-      data = data.map(
+      const adjustedData = data.map(
         (item: { date: string; price: number; time?: string }, index) => {
           let { date, price }: { date: number | string; price: number } = item;
           let newDate = new Date().getTime();
@@ -47,7 +47,7 @@ const Stocks = ({ stocksData }: StocksDataType) => {
         }
       );
 
-      return { ...stock, data };
+      return { ...stock, data: adjustedData };
     });
 
     setStocks(() => main);
