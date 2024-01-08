@@ -37,3 +37,7 @@ Encountered a problem, because I receive 3 data objects for each stock, and thei
 ### Day 6
 
 Install react-router-dom@6 and configured it. Projects Looking nice with a capital N.
+
+### Day 7
+
+Kind of a slow day, focused on other things, but got 10 different shades of red, and changed the card and fixed the modal

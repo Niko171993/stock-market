@@ -9,13 +9,11 @@ import { OfficialDataTypeObj } from 'Types/Types';
 const Stocks = ({ stocksData }: StocksDataType) => {
   // const [newData, setNewData] = useState<newSimulationType[] | []>([]);
   // const [isLoading, setIsLoading] = useState(false);
-  const [stocksDataArray, setStocksDataArray] = useState<
-    SingleStockType[] | []
-  >([]);
+  const [stocks, setStocks] = useState<SingleStockType[] | []>([]);
   const {
     updateSimulatedStocks,
     isLoading,
-    simulatedStocks: newData,
+    simulatedStocks: newSimulatedData,
     setLoading,
     setLoadingFalse,
   } = useSimulatedContext();
@@ -52,15 +50,15 @@ const Stocks = ({ stocksData }: StocksDataType) => {
       return { ...stock, data };
     });
 
-    setStocksDataArray(() => main);
+    setStocks(() => main);
   };
   const tempStocks = () => {
     setLoading();
     let main = [];
-    if (newData.length) {
-      main = newData;
+    if (newSimulatedData.length) {
+      main = newSimulatedData;
     } else {
-      main = stocksDataArray;
+      main = stocks;
     }
     try {
       const tempStocksData = main.map((stock) => {
@@ -93,10 +91,10 @@ const Stocks = ({ stocksData }: StocksDataType) => {
   let content: JSX.Element | string;
   if (isLoading) {
     content = '...loading';
-  } else if (newData.length) {
+  } else if (newSimulatedData.length) {
     content = (
       <>
-        {newData.map((stock) => (
+        {newSimulatedData.map((stock) => (
           <SingleStock key={stock.id} {...stock} />
         ))}
       </>
@@ -104,7 +102,7 @@ const Stocks = ({ stocksData }: StocksDataType) => {
   } else {
     content = (
       <>
-        {stocksDataArray.map((stock) => (
+        {stocks.map((stock) => (
           <SingleStock key={stock.id} {...stock} />
         ))}
       </>

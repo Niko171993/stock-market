@@ -28,10 +28,13 @@
   &__chart {
     width: 300px;
     height: 300px;
+    margin-left: -2rem;
   }
   &__chartContainer {
     display: flex;
     margin-left: -2rem;
+    width: 100%;
+    justify-content: space-around;
   }
   &__content {
     display: flex;
@@ -45,8 +48,8 @@
     color: white;
   }
   &__info {
-    margin-left: 2rem;
     margin-top: 6rem;
+    margin-left: -4rem;
   }
   &__subName {
     color: red;

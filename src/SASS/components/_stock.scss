@@ -1,7 +1,7 @@
 .stock {
   &__singleBtn {
     display: flex;
-    color: red;
+    color: $color-red-3;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -57,7 +57,7 @@
     text-align: center;
   }
   &__title {
-    color: red;
+    color: $color-red-6;
   }
   &__subTitle {
     display: inline-block;
