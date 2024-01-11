@@ -41,3 +41,9 @@ Install react-router-dom@6 and configured it. Projects Looking nice with a capit
 ### Day 7
 
 Kind of a slow day, focused on other things, but got 10 different shades of red, and changed the card and fixed the modal
+
+### Day 8 Resting
+
+### Day 9
+
+Reformatted and upgraded the code, Also created a single page with a chart and a button back home. This is a splendid start

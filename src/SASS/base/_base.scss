@@ -83,3 +83,21 @@ button:focus {
 .overflow-hidden {
   overflow: hidden;
 }
+
+.row {
+  display: flex;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.btn {
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
+  color: $color-red-6;
+  background: transparent;
+  border-bottom: 1px solid $color-red-7;
+  display: inline-block;
+  text-decoration: none;
+}

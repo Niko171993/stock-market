@@ -22,7 +22,7 @@ export type CustomTooltipProps = {
   payload?: Array<{ payload: DataPoint; value: number }>;
 };
 
-const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
+const SingleStock = ({ companyName, stockName, data, id }: SingleStockType) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
@@ -59,6 +59,7 @@ const SingleStock = ({ companyName, stockName, data }: SingleStockType) => {
         companyName={companyName}
         stockName={stockName}
         data={data}
+        id={id}
       />
       <div className="stock__img">
         <h3>{stockName} Chart</h3>

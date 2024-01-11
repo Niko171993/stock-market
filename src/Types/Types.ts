@@ -15,19 +15,13 @@ export type SingleStockType = {
 
 export type SimulatedContextType = {
   isLoading: boolean;
-  simulatedStocks:
-    | {
-        id: number;
-        companyName: string;
-        stockName: string;
-        data: { date: string; price: number }[];
-      }[]
-    | [];
+  simulatedStocks: SingleStockType[] | [];
   updateSimulatedStocks: (newData: SingleStockType[]) => void;
   setLoading: () => void;
   setLoadingFalse: () => void;
 };
 export type ModalType = {
+  id: number;
   isOpen: boolean;
   companyName: string;
   stockName: string;
