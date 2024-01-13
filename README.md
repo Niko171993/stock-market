@@ -47,3 +47,7 @@ Kind of a slow day, focused on other things, but got 10 different shades of red,
 ### Day 9
 
 Reformatted and upgraded the code, Also created a single page with a chart and a button back home. This is a splendid start
+
+### Day 10
+
+Slider added to the SinglePage, Slick Slider. And Made it responsive
