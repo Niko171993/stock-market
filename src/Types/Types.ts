@@ -37,3 +37,10 @@ export type OfficialDataType = {
 export type OfficialDataTypeObj = {
   data: { date: string; price: number; time?: string }[];
 };
+export type MainSettingsType = {
+  dots: boolean;
+  infinite: boolean;
+  speed: number;
+  slidesToShow: number;
+  slidesToScroll: number;
+};

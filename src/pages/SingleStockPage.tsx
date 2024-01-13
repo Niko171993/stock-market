@@ -14,11 +14,13 @@ import { useSimulatedContext } from '../contexts/StockAPIContext';
 import { CustomTooltipProps } from '../components/SingleStock';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-
+import { useEffect, useState } from 'react';
+import { MainSettingsType } from '../Types/Types';
 const SingleStockPage = () => {
   const { id: PAGEID } = useParams();
   const { simulatedStocks, isLoading } = useSimulatedContext();
-
+  const [innerWidth, setInnerWidth] = useState<number>(0);
+  const [mainSettings, setMainSettings] = useState<MainSettingsType | {}>();
   const singleStock = simulatedStocks.find(
     (stock) => stock.id === Number(PAGEID)
   )!;
@@ -37,6 +39,7 @@ const SingleStockPage = () => {
 
     return null;
   };
+
   const pageSlides = simulatedStocks.map((stock) => {
     const {
       id,
@@ -81,13 +84,58 @@ const SingleStockPage = () => {
       </Link>
     );
   });
-  let settings = {
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 560,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
+
   return (
     <section className="singleStockPage">
       <div className="center">
