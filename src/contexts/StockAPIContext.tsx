@@ -15,7 +15,7 @@ import { stocksData } from '../data/stocks';
 
 const initialState = {
   isLoading: false,
-  simulatedStocks: [...stocksData],
+  simulatedStocks: [],
   updateSimulatedStocks: (): void => {},
   setLoading: () => {},
   setLoadingFalse: () => {},
@@ -75,7 +75,6 @@ const StocksAPIContext = ({ children }: ChildrenType) => {
     setLoadingFalse();
   };
   const tempStocks = () => {
-    setLoading();
     try {
       const tempStocksData: SingleStockType[] = state.simulatedStocks.map(
         (stock: SingleStockType) => {
@@ -95,7 +94,6 @@ const StocksAPIContext = ({ children }: ChildrenType) => {
     } catch (error) {
       console.error('Error in tempStocks:', error);
     } finally {
-      setLoadingFalse();
     }
   };
   useEffect(() => {

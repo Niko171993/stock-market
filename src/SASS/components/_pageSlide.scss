@@ -1,0 +1,16 @@
+.singleStockPage__slides {
+  margin-top: 2rem;
+}
+.pageSlide {
+  color: $color-red-7;
+  padding: 0.5rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+.pageSlide__gold {
+  background: gold;
+}
+.slick-slide > div {
+  margin: 0 10px;
+}
