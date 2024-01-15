@@ -1,7 +1,7 @@
 import SingleStock from './SingleStock';
 
 import { useSimulatedContext } from '../contexts/StockAPIContext';
-
+import { Link } from 'react-router-dom';
 const Stocks = () => {
   const { simulatedStocks: newSimulatedData } = useSimulatedContext();
 
@@ -15,7 +15,14 @@ const Stocks = () => {
     </>
   );
 
-  return <>{content}</>;
+  return (
+    <>
+      {content}
+      <Link className="stock__singleBtn" to={`/admin`}>
+        Link To Admin
+      </Link>
+    </>
+  );
 };
 
 export default Stocks;
