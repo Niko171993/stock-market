@@ -87,7 +87,9 @@ button:focus {
 .row {
   display: flex;
 }
-
+.gap {
+  gap: 1rem;
+}
 .justify-end {
   justify-content: flex-end;
 }

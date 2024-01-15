@@ -1,0 +1,55 @@
+.admin {
+  margin: 0 auto;
+  margin-top: 6rem !important;
+  color: white;
+  width: 100%;
+  margin: 0 auto;
+  &__table {
+    margin: 0 auto;
+  }
+  &__th {
+    padding-inline: 0.5rem;
+  }
+  &__td {
+    padding-inline: 0.5rem;
+    padding-block: 0.3rem;
+  }
+
+  &__editBtn {
+    padding: 0.5rem;
+    background: #222;
+    color: white;
+  }
+  &__form {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+}
+.form-control {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  input {
+    padding: 0.5rem 1rem;
+  }
+  button {
+    padding: 0.5rem 1rem;
+    background: #222;
+    color: white;
+    margin-left: 0.5rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .admin__td {
+    padding-inline: 1rem;
+  }
+  .admin__th {
+    padding-inline: 1rem;
+  }
+}
+.admin__gold {
+  background: $color-red-7;
+  color: white;
+}

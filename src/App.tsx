@@ -4,6 +4,7 @@ import { Stocks } from './components/index';
 
 import { StocksLayout } from './components/index';
 import SingleStockPage from './pages/SingleStockPage';
+import AdminPage from './pages/AdminPage';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <Route index element={<Stocks />} />
         </Route>
         <Route path="/:id" element={<SingleStockPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </>
   );
