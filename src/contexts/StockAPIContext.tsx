@@ -99,10 +99,10 @@ const StocksAPIContext = ({ children }: ChildrenType) => {
   useEffect(() => {
     changeTime();
   }, []);
-  // useEffect(() => {
-  //   const timeout = setTimeout(tempStocks, 30000);
-  //   return () => clearTimeout(timeout);
-  // }, [tempStocks]);
+  useEffect(() => {
+    const timeout = setTimeout(tempStocks, 30000);
+    return () => clearTimeout(timeout);
+  }, [tempStocks]);
   return (
     <SimulatedContext.Provider
       value={{
