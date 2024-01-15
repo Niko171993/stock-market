@@ -51,3 +51,7 @@ Reformatted and upgraded the code, Also created a single page with a chart and a
 ### Day 10
 
 Slider added to the SinglePage, Slick Slider. And Made it responsive
+
+### Day 11
+
+Admin page added, thought I work on some crud operations, not as happy as I should be, but its a work in progress
