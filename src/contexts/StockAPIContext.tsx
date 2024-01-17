@@ -12,10 +12,14 @@ import { format } from 'date-fns';
 import { OfficialDataTypeObj } from 'Types/Types';
 //
 import { stocksData } from '../data/stocks';
-
+const loadStocksFromStorage = () => {
+  let stocks = localStorage.getItem('stocks');
+  if (stocks) return JSON.parse(stocks);
+  else return stocksData;
+};
 const initialState = {
   isLoading: false,
-  simulatedStocks: [],
+  simulatedStocks: loadStocksFromStorage(),
   updateSimulatedStocks: (): void => {},
   setLoading: () => {},
   setLoadingFalse: () => {},
@@ -45,8 +49,7 @@ const StocksAPIContext = ({ children }: ChildrenType) => {
   };
 
   const changeTime = () => {
-    setLoading();
-    const main = stocksData.map((stock) => {
+    const main = state.simulatedStocks.map((stock: SingleStockType) => {
       let { data }: OfficialDataTypeObj = stock;
       const milli = 15 * 1000;
       let totalMilli = milli * 4;

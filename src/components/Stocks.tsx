@@ -14,7 +14,7 @@ const Stocks = () => {
       ))}
     </>
   );
-
+  console.log(newSimulatedData, 'AKA');
   return (
     <>
       {content}

@@ -93,7 +93,9 @@ button:focus {
 .justify-end {
   justify-content: flex-end;
 }
-
+.row-end {
+  justify-content: end;
+}
 .btn {
   font-size: 1.3rem;
   padding: 0.5rem 1rem;

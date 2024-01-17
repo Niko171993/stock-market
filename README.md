@@ -55,3 +55,7 @@ Slider added to the SinglePage, Slick Slider. And Made it responsive
 ### Day 11
 
 Admin page added, thought I work on some crud operations, not as happy as I should be, but its a work in progress
+
+### Day 12
+
+In the admin page, add new Stock Added, also localStorage added to keep track of changes, also found a big bug that i fixed, regarding rendering
