@@ -135,37 +135,69 @@ const SingleStockPage = () => {
       },
     ],
   };
-
+  const oldPrice = data[data.length - 1].price;
+  const newPrice = data[data.length - 2].price;
+  const dataHistory = data.map((item) => {
+    const { date, price } = item;
+    return (
+      <article key={date} className="singleStockPage__history-data">
+        <div className="singleStockPage__single-data">
+          <p className="el">
+            <span>Time :</span> <span>{date}</span>
+          </p>
+          <p className="el">
+            <span>Price :</span> <span>{price}</span>
+          </p>
+        </div>
+        <div className="dataHistory__line"></div>
+      </article>
+    );
+  });
   return (
     <section className="singleStockPage">
       <div className="center">
-        <div className="singleStockPage__slides">
+        <h1>Day Trade</h1>
+        <article className="singleStockPage__slides">
           <Slider {...settings}>{pageSlides}</Slider>
-        </div>
-        <div className="singleStockPage__lineChart">
-          <ResponsiveContainer width="99%" height="100%">
-            <LineChart
-              data={data}
-              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-            >
-              <XAxis />
-              <YAxis />
-              <Tooltip
-                content={<CustomTooltip />}
-                contentStyle={{
-                  background: 'white !important',
-                  color: 'white !important',
-                }}
-                wrapperStyle={{
-                  backgroundColor: 'white',
-                  color: 'red',
-                }}
-              />
-              <Legend />
-              <Line dataKey="price" stroke="#82ca9d" />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+        </article>
+        <article className="singleStockPage__chart-container">
+          <div className="singleStockPage__prices">
+            <div className="singleStockPage__pricebox">
+              <p>Old Price: ${oldPrice}</p>
+            </div>
+            <div className="singleStockPage__pricebox">
+              <p>New Price: ${newPrice}</p>
+            </div>
+          </div>
+          <div className="singleStockPage__lineChart">
+            <ResponsiveContainer width="99%" height="100%">
+              <LineChart
+                data={data}
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+              >
+                <XAxis />
+                <YAxis />
+                <Tooltip
+                  content={<CustomTooltip />}
+                  contentStyle={{
+                    background: 'white !important',
+                    color: 'white !important',
+                  }}
+                  wrapperStyle={{
+                    backgroundColor: 'white',
+                    color: 'red',
+                  }}
+                />
+                <Legend />
+                <Line dataKey="price" stroke="#82ca9d" />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </article>
+        <article className="singleStockPage__history">
+          <h4>Data History </h4>
+          <div className="dataHistory__container">{dataHistory}</div>
+        </article>
       </div>
       <Link to=".." className="btn">
         Back Home

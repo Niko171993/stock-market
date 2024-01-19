@@ -14,3 +14,63 @@
   width: 100%;
   min-height: 100vh;
 }
+.singleStockPage__chart-container {
+  margin-top: 2rem;
+}
+.singleStockPage__prices {
+  color: $color-red-6;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: -6rem;
+  margin-left: 5rem;
+}
+.singleStockPage__pricebox {
+  height: 2rem;
+  width: 10rem;
+  background: white;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.singleStockPage__history-data {
+  color: white;
+  padding: 1rem;
+}
+.singleStockPage__single-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+}
+.el {
+  display: flex;
+  gap: 2rem;
+
+  width: 150px;
+}
+.singleStockPage__history {
+  padding-left: 4rem;
+  h4 {
+    margin-left: 1rem;
+    font-size: 2rem;
+  }
+}
+.dataHistory__line {
+  background: $color-red-7;
+  height: 2px;
+  width: 400px;
+  margin-top: 1rem;
+  margin-bottom: -1rem;
+}
+h1 {
+  color: $color-red-7;
+  font-size: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+.dataHistory__container {
+  height: 20rem;
+  overflow: scroll;
+  width: 450px;
+}

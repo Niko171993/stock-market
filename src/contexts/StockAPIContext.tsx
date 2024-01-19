@@ -75,7 +75,6 @@ const StocksAPIContext = ({ children }: ChildrenType) => {
     });
 
     updateSimulatedStocks(main);
-    setLoadingFalse();
   };
   const tempStocks = () => {
     try {
