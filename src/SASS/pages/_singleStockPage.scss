@@ -71,6 +71,6 @@ h1 {
 }
 .dataHistory__container {
   height: 20rem;
-  overflow: scroll;
+  overflow-y: auto;
   width: 450px;
 }
