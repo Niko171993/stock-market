@@ -62,4 +62,4 @@ In the admin page, add new Stock Added, also localStorage added to keep track of
 
 ### Day 13
 
-After a couple days of rest, I made the modal responsive
+1.After a couple days of rest, I made the modal responsive. 2. added photo upload on edit Admin Page

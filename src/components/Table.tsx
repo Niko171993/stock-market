@@ -6,6 +6,7 @@ const Table = ({ editID, onEdit }) => {
   const headers = (
     <tr className="admin__tr">
       <th className="admin__th">id</th>
+      <th className="admin__th">image</th>
       <th className="admin__th">companyName</th>
       <th className="admin__th">stockName</th>
       <th className="admin__th">date/price</th>
@@ -15,12 +16,15 @@ const Table = ({ editID, onEdit }) => {
     onEdit(id);
   };
   const cells = simulatedStocks.map((stock) => {
-    const { id, companyName, stockName, data } = stock;
+    const { id, companyName, stockName, data, img } = stock;
     const makeGold = id === editID;
 
     return (
       <tr key={id} className={`${makeGold && 'admin__gold'}`}>
         <td className="admin__td">{id}</td>
+        <td className="admin__td">
+          <img className="table-img" src={img || ''} alt={id} />
+        </td>
         <td className="admin__td">{companyName}</td>
         <td className="admin__td">{stockName}</td>
         <td className="admin__td">

@@ -9,6 +9,13 @@ const AdminPage = () => {
   const [editCompanyName, setEditCompanyName] = useState<string>('');
   const [editStockName, setEditStockName] = useState<string>('');
   const [open, setOpen] = useState<boolean>(false);
+  const [img, setImg] = useState<any>(null);
+
+  const handleImg = (e: any) => {
+    const file = e.target.files;
+    if (file && file.length > 0) setImg(file[0]);
+  };
+
   const handleEdit = (id: number) => {
     setEditing(true);
     setEditID(id);
@@ -22,21 +29,26 @@ const AdminPage = () => {
     setEditID(null);
     setEditStockName('');
     setEditCompanyName('');
+    setOpen(false);
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (editCompanyName && !editing) {
       const lastId = simulatedStocks[simulatedStocks.length - 1].id + 1;
       const data = simulatedStocks[simulatedStocks.length - 5].data;
+      const newImage = URL.createObjectURL(img);
       const newStock = {
         id: lastId,
         companyName: editCompanyName,
         stockName: editStockName,
         data: data,
+        img: newImage,
       };
       const newStocks = [...simulatedStocks, newStock]!;
       updateSimulatedStocks(newStocks);
       setOpen(false);
+      setEditStockName('');
+      setEditCompanyName('');
     }
     if (editing) {
       const editedStocks = simulatedStocks.map((stock) => {
@@ -91,6 +103,15 @@ const AdminPage = () => {
                     type="text"
                     value={editStockName}
                     onChange={(e) => setEditStockName(e.target.value)}
+                    placeholder="stock Name"
+                  />
+                </div>
+                <div className="form-control">
+                  <label htmlFor="forImage">Image</label>
+                  <input
+                    id="forImage"
+                    type="file"
+                    onChange={handleImg}
                     placeholder="stock Name"
                   />
                 </div>
