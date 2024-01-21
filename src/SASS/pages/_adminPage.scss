@@ -1,6 +1,6 @@
 .admin {
   margin: 0 auto;
-  margin-top: 6rem !important;
+  margin-top: 2rem !important;
   color: white;
   width: 100%;
   margin: 0 auto;
@@ -57,4 +57,11 @@
   width: 40px;
   height: 40px;
   object-fit: cover;
+}
+.table-container {
+  overflow-y: scroll;
+  height: 250px;
+}
+.add-item {
+  margin-bottom: 2rem;
 }

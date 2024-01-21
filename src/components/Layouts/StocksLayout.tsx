@@ -1,9 +1,13 @@
 import { Outlet } from 'react-router-dom';
+import Navbar from '../Navbar';
 const StocksLayout = () => {
   return (
-    <div className="section-center">
-      <Outlet />
-    </div>
+    <>
+      <Navbar />
+      <>
+        <Outlet />
+      </>
+    </>
   );
 };
 

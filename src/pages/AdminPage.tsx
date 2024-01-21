@@ -62,6 +62,7 @@ const AdminPage = () => {
           return stock;
         }
       });
+
       updateSimulatedStocks(editedStocks);
       setEditing(false);
       setEditID(null);
@@ -72,15 +73,18 @@ const AdminPage = () => {
   useEffect(() => {
     localStorage.setItem('stocks', JSON.stringify(simulatedStocks));
   }, [simulatedStocks]);
+  useEffect(() => {
+    updateSimulatedStocks(simulatedStocks.sort((a, b) => b.id - a.id));
+  }, []);
   return (
     <div className="center">
       <div className="admin">
-        <div className="row row-end">
+        <div className="row row-end add-item">
           <button className="btn" onClick={() => setOpen(true)}>
             Add Item
           </button>
         </div>
-        <div>
+        <div className="table-container">
           <Table editID={editID} onEdit={handleEdit} />
         </div>
 

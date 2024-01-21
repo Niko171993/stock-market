@@ -1,0 +1,23 @@
+.nav {
+  height: 5rem;
+  background: white;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  padding-right: 2rem;
+}
+.list-item {
+  margin-left: 2rem;
+}
+.link {
+  text-decoration: none;
+  color: #222;
+}
+li {
+  list-style-type: none;
+}
