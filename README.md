@@ -59,3 +59,7 @@ Admin page added, thought I work on some crud operations, not as happy as I shou
 ### Day 12
 
 In the admin page, add new Stock Added, also localStorage added to keep track of changes, also found a big bug that i fixed, regarding rendering
+
+### Day 13
+
+After a couple days of rest, I made the modal responsive

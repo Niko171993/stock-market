@@ -84,3 +84,19 @@
     height: 100px;
   }
 }
+@media screen and (max-width: 768px) {
+  .modal__chart {
+    width: 200px;
+    height: 200px;
+  }
+  .modal__chartContainer {
+    align-items: center;
+  }
+  h5 {
+    font-size: 0.8rem;
+  }
+  .modal__info {
+    margin-top: 0rem;
+    margin-left: 2rem;
+  }
+}
