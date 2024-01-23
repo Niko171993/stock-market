@@ -3,59 +3,62 @@
   width: 90vw;
   margin: 0 auto;
 }
-.singleStockPage__lineChart {
-  height: 30rem;
-  width: auto;
-  margin: 0 auto;
-  margin-top: 6rem;
-}
+
 .singleStockPage {
   background: black;
   width: 100%;
   min-height: 100vh;
+  &__lineChart {
+    height: 30rem;
+    width: auto;
+    margin: 0 auto;
+    margin-top: 6rem;
+  }
+  &__chart-container {
+    margin-top: 2rem;
+  }
+  &__prices {
+    color: $color-red-6;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: -6rem;
+    margin-left: 5rem;
+  }
+  &__pricebox {
+    height: 2rem;
+    width: 10rem;
+    background: white;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__history-data {
+    color: white;
+    padding: 1rem;
+  }
+  &__single-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+  }
+  &__history {
+    padding-left: 4rem;
+    h4 {
+      margin-left: 1rem;
+      font-size: 2rem;
+    }
+  }
 }
-.singleStockPage__chart-container {
-  margin-top: 2rem;
-}
-.singleStockPage__prices {
-  color: $color-red-6;
-  display: flex;
-  gap: 1rem;
-  margin-bottom: -6rem;
-  margin-left: 5rem;
-}
-.singleStockPage__pricebox {
-  height: 2rem;
-  width: 10rem;
-  background: white;
-  border-radius: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.singleStockPage__history-data {
-  color: white;
-  padding: 1rem;
-}
-.singleStockPage__single-data {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 400px;
-}
+
 .el {
   display: flex;
   gap: 2rem;
 
   width: 150px;
 }
-.singleStockPage__history {
-  padding-left: 4rem;
-  h4 {
-    margin-left: 1rem;
-    font-size: 2rem;
-  }
-}
+
 .dataHistory__line {
   background: $color-red-7;
   height: 2px;

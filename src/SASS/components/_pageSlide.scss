@@ -10,10 +10,11 @@
   height: 150px;
   max-width: 350px;
   margin: 0 auto;
+  &__gold {
+    background: gold;
+  }
 }
-.pageSlide__gold {
-  background: gold;
-}
+
 .slick-slide > div {
   margin: 0 10px;
 }

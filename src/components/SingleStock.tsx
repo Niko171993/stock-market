@@ -92,27 +92,27 @@ const SingleStock = ({ companyName, stockName, data, id }: SingleStockType) => {
       </div>
 
       <div className="stock__info">
-        <div className="flex">
+        <div className="grid-1">
           <h5 className="stock__title">Company Name</h5>
           <div>
             <h3 className="stock__subTitle">{companyName}</h3>
           </div>
         </div>
 
-        <div className="flex">
+        <div className="grid-1">
           <h5 className="stock__title">Stock Name</h5>
           <div>
             <p className="stock__subTitle">{stockName}</p>
           </div>
         </div>
 
-        <div className="flex">
+        <div className="grid-1">
           <h5 className="stock__title">Current Price</h5>
           <div>
             <p className="stock__subTitle">$ {data[data.length - 1].price}</p>
           </div>
         </div>
-        <div className="flex no-divider">
+        <div className="grid-1 no-divider">
           <h5 className="stock__title">old Price</h5>
           <div>
             <p className="stock__subTitle">$ {data[data.length - 2].price}</p>

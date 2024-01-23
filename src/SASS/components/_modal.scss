@@ -55,6 +55,16 @@
     color: red;
     margin-right: 0.5rem;
   }
+  &__main-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
 }
 
 .show-modal {
@@ -68,18 +78,8 @@
   z-index: -1;
 }
 
-.gucci {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  position: absolute;
-  top: 0px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-}
 @media screen and (min-width: 768px) {
-  .gucci {
+  .modal__main-image {
     width: 100px;
     height: 100px;
   }

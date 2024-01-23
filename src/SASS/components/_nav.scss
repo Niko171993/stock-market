@@ -10,14 +10,15 @@
   align-items: center;
   height: 100%;
   padding-right: 2rem;
+  &__list-item {
+    margin-left: 2rem;
+  }
+  &__link {
+    text-decoration: none;
+    color: #222;
+  }
 }
-.list-item {
-  margin-left: 2rem;
-}
-.link {
-  text-decoration: none;
-  color: #222;
-}
+
 li {
   list-style-type: none;
 }

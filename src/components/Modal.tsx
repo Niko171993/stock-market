@@ -51,7 +51,11 @@ const Modal = ({
           <button className="modal__closeBtn" onClick={() => setIsOpen(false)}>
             X
           </button>
-          <img className="gucci" src={randomImage} alt="gucci mane" />
+          <img
+            className="modal__main-image"
+            src={randomImage}
+            alt="main-image"
+          />
           <div className="modal__chartContainer">
             <div className="modal__chart">
               <ResponsiveContainer width="99%" height="100%">
