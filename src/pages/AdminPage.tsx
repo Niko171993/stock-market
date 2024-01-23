@@ -17,12 +17,19 @@ const AdminPage = () => {
   };
 
   const handleEdit = (id: number) => {
+    setOpen(false);
     setEditing(true);
     setEditID(id);
     const stock = simulatedStocks.find((stock) => stock.id === Number(id));
     const { companyName, stockName } = stock!;
     setEditStockName(() => stockName);
-    setEditCompanyName(() => editCompanyName);
+    setEditCompanyName(() => companyName);
+    console.log(open, editing);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+    setEditing(false);
+    console.log(open, editing);
   };
   const disableEditing = () => {
     setEditing(false);
@@ -76,11 +83,12 @@ const AdminPage = () => {
   useEffect(() => {
     updateSimulatedStocks(simulatedStocks.sort((a, b) => b.id - a.id));
   }, []);
+
   return (
     <div className="center">
       <div className="admin">
         <div className="row row-end add-item">
-          <button className="btn" onClick={() => setOpen(true)}>
+          <button className="btn" onClick={handleOpen}>
             Add Item
           </button>
         </div>
@@ -89,44 +97,43 @@ const AdminPage = () => {
         </div>
 
         <div className="admin__edit">
-          {editing ||
-            (open && (
-              <form className="admin__form" onSubmit={handleSubmit}>
-                <div className="form-control">
-                  <label>Company Name</label>
-                  <input
-                    type="text"
-                    value={editCompanyName}
-                    onChange={(e) => setEditCompanyName(e.target.value)}
-                    placeholder="company Name"
-                  />
+          {(open || editing) && (
+            <form className="admin__form" onSubmit={handleSubmit}>
+              <div className="form-control">
+                <label>Company Name</label>
+                <input
+                  type="text"
+                  value={editCompanyName}
+                  onChange={(e) => setEditCompanyName(e.target.value)}
+                  placeholder="company Name"
+                />
+              </div>
+              <div className="form-control">
+                <label>Stock Name</label>
+                <input
+                  type="text"
+                  value={editStockName}
+                  onChange={(e) => setEditStockName(e.target.value)}
+                  placeholder="stock Name"
+                />
+              </div>
+              <div className="form-control">
+                <label htmlFor="forImage">Image</label>
+                <input
+                  id="forImage"
+                  type="file"
+                  onChange={handleImg}
+                  placeholder="stock Name"
+                />
+              </div>
+              <div className="form-control">
+                <div>
+                  <button type="submit">{editing ? 'edit' : 'submit'}</button>
+                  <button onClick={disableEditing}>Cancel</button>
                 </div>
-                <div className="form-control">
-                  <label>Stock Name</label>
-                  <input
-                    type="text"
-                    value={editStockName}
-                    onChange={(e) => setEditStockName(e.target.value)}
-                    placeholder="stock Name"
-                  />
-                </div>
-                <div className="form-control">
-                  <label htmlFor="forImage">Image</label>
-                  <input
-                    id="forImage"
-                    type="file"
-                    onChange={handleImg}
-                    placeholder="stock Name"
-                  />
-                </div>
-                <div className="form-control">
-                  <div>
-                    <button type="submit">{editing ? 'edit' : 'submit'}</button>
-                    <button onClick={disableEditing}>Cancel</button>
-                  </div>
-                </div>
-              </form>
-            ))}
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </div>
