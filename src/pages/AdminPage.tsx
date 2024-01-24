@@ -24,12 +24,10 @@ const AdminPage = () => {
     const { companyName, stockName } = stock!;
     setEditStockName(() => stockName);
     setEditCompanyName(() => companyName);
-    console.log(open, editing);
   };
   const handleOpen = () => {
     setOpen(true);
     setEditing(false);
-    console.log(open, editing);
   };
   const disableEditing = () => {
     setEditing(false);

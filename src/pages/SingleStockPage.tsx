@@ -16,11 +16,13 @@ import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { useEffect, useState } from 'react';
 import { MainSettingsType } from '../Types/Types';
+import IncrementValue from '../components/IncrementValue';
 const SingleStockPage = () => {
   const { id: PAGEID } = useParams();
   const { simulatedStocks, isLoading } = useSimulatedContext();
   const [innerWidth, setInnerWidth] = useState<number>(0);
   const [mainSettings, setMainSettings] = useState<MainSettingsType | {}>();
+
   const singleStock = simulatedStocks.find(
     (stock) => stock.id === Number(PAGEID)
   )!;
@@ -153,6 +155,7 @@ const SingleStockPage = () => {
       </article>
     );
   });
+
   return (
     <section className="singleStockPage">
       <div className="center">
@@ -163,10 +166,10 @@ const SingleStockPage = () => {
         <article className="singleStockPage__chart-container">
           <div className="singleStockPage__prices">
             <div className="singleStockPage__pricebox">
-              <p>Old Price: ${oldPrice}</p>
+              <IncrementValue price={oldPrice}>New Price</IncrementValue>
             </div>
             <div className="singleStockPage__pricebox">
-              <p>New Price: ${newPrice}</p>
+              <IncrementValue price={newPrice}>Old Price</IncrementValue>
             </div>
           </div>
           <div className="singleStockPage__lineChart">
