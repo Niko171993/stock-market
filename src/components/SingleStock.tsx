@@ -1,4 +1,4 @@
-import { OfficialDataTypeObj, SingleStockType } from 'Types/Types';
+import { SingleStockType } from 'Types/Types';
 
 import {
   BarChart,
@@ -12,7 +12,7 @@ import {
 import bull from '../images/bull.jpg';
 import { Modal } from './index';
 import { useState, useEffect } from 'react';
-import { OfficialDataType } from 'Types/Types';
+
 export type DataPoint = {
   date: string;
   value: number;
