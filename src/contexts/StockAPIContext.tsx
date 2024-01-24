@@ -5,17 +5,23 @@ import stocksAPIReducer from '../reducers/stocksAPIReducer';
 import { useReducer } from 'react';
 import { UPDATESIMULATEDSTOCKS } from '../actions/SimulatedActions';
 import { useContext } from 'react';
+import useChangeTime from '../custom-hooks/useChangeTime';
 //
-
 import { useEffect } from 'react';
 import { format } from 'date-fns';
-import { OfficialDataTypeObj } from 'Types/Types';
+
 //
 import { stocksData } from '../data/stocks';
 const loadStocksFromStorage = () => {
-  let stocks = localStorage.getItem('stocks');
-  if (stocks) return JSON.parse(stocks);
-  else return stocksData;
+  let stocks = JSON.parse(localStorage.getItem('stocks')!);
+  if (stocks && stocks.length) {
+    const main = useChangeTime(stocks);
+    return main;
+  } else {
+    const oldStocks = useChangeTime(stocksData);
+    localStorage.setItem('stocks', JSON.stringify(oldStocks));
+    return oldStocks;
+  }
 };
 const initialState = {
   isLoading: false,
@@ -48,34 +54,6 @@ const StocksAPIContext = ({ children }: ChildrenType) => {
     return newAmount;
   };
 
-  const changeTime = () => {
-    const main = state.simulatedStocks.map((stock: SingleStockType) => {
-      let { data }: OfficialDataTypeObj = stock;
-      const milli = 15 * 1000;
-      let totalMilli = milli * 4;
-      let milliArray: number[] = [];
-      while (totalMilli > 0) {
-        milliArray = [...milliArray, totalMilli - milli];
-        totalMilli -= milli;
-      }
-
-      const adjustedData = data.map(
-        (item: { date: string; price: number; time?: string }, index) => {
-          let { date, price }: { date: string; price: number } = item;
-          let newDate = new Date().getTime();
-          const newTime = Number(newDate) - milliArray[index];
-          date = new Date(newTime).toISOString();
-          date = format(date, 'HH:mm:ss');
-
-          return { date, price };
-        }
-      );
-
-      return { ...stock, data: adjustedData };
-    });
-
-    updateSimulatedStocks(main);
-  };
   const tempStocks = () => {
     try {
       const tempStocksData: SingleStockType[] = state.simulatedStocks.map(
@@ -92,15 +70,14 @@ const StocksAPIContext = ({ children }: ChildrenType) => {
         }
       );
 
+      localStorage.setItem('stocks', JSON.stringify(tempStocksData));
       updateSimulatedStocks(tempStocksData);
     } catch (error) {
       console.error('Error in tempStocks:', error);
     } finally {
     }
   };
-  useEffect(() => {
-    changeTime();
-  }, []);
+
   useEffect(() => {
     const timeout = setTimeout(tempStocks, 30000);
     return () => clearTimeout(timeout);

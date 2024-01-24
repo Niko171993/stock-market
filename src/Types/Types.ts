@@ -32,7 +32,6 @@ export type ModalType = {
 export type OfficialDataType = {
   date: string;
   price: number;
-  time?: string;
 };
 export type OfficialDataTypeObj = {
   data: { date: string; price: number; time?: string }[];

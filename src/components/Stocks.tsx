@@ -1,16 +1,15 @@
-import SingleStock from './SingleStock';
-
+import TempSingleStock from './TempSingleStock';
 import { useSimulatedContext } from '../contexts/StockAPIContext';
 
 const Stocks = () => {
-  const { simulatedStocks: newSimulatedData } = useSimulatedContext();
+  const { simulatedStocks } = useSimulatedContext();
 
   let content: JSX.Element | string;
 
   content = (
     <>
-      {newSimulatedData.map((stock) => (
-        <SingleStock key={stock.id} {...stock} />
+      {simulatedStocks.map((stock) => (
+        <TempSingleStock key={stock.id} {...stock} />
       ))}
     </>
   );
